@@ -1,21 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Escriba un método de clase que dado un número n devuelva un nuevo arreglo de tamaño n
+con los n primeros múltiplos enteros de n mayores o iguales que 1.
+
+Ejemplo: f(5) = [5; 10; 15; 20; 25]; f(k) = {n*k donde k : 1..k}
+
+Agregue al programa la posibilidad de probar con distintos valores de n ingresandolos por
+teclado, mediante el uso de System.in. La clase Scanner permite leer de forma sencilla
+valores de entrada.
+
  */
 package Practica1.Ejercicio2;
 
-/**
- *
- * @author Candela
- */
 public class Dos {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }
