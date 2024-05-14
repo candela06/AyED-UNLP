@@ -1,48 +1,86 @@
-/*
-Escriba una clase llamada TestArrayList cuyo método main recibe una secuencia de
-números, los agrega a una lista de tipo ArrayList, y luego de haber agregado todos los
-números a la lista, imprime el contenido de la misma iterando sobre cada elemento.
-
- */
 package Practica1.Ejercicio7;
-
 import java.util.*;
-public class TestArrayList {
 
-    public static void main(String[] args) {
-        
-        ArrayList<Integer> num = new ArrayList<Integer>();
-        num.add(21);
-        num.add(52);
-        num.add(18);
-        num.add(25);
-        
-        Iterator<Integer> it = num.iterator();
-        while (it.hasNext()){
-            System.out.println(it.next());
+
+public class TestArrayList {
+    public static boolean esta(Estudiante e, ArrayList<Estudiante> list){
+        boolean encontre = false;
+        int i=0;
+        while(i<list.size() && (!encontre)){
+            if (list.get(i).equals(e)){
+                encontre=true;
+            }
+            i++;
         }
-        ArrayList<Estudiante> listaEsts= new ArrayList<Estudiante>();
-        listaEsts.add(new Estudiante("candela","silva","informatica"));
-        listaEsts.add(new Estudiante("melnay","silva","ingenieria"));
-        listaEsts.add(new Estudiante("namjoon","kim","psicologia"));
+        return encontre;
+    }
+    
+    public static void metodo7d(){
         
-        ArrayList<Estudiante> copiaEsts= new ArrayList<Estudiante>(listaEsts);
+        //■ cree una lista que contenga 3 estudiantes
+        ArrayList<Estudiante> listaEst = new ArrayList<Estudiante>();
+        listaEst.add(new Estudiante("candela","silva","informatica"));
+        listaEst.add(new Estudiante("melnay","silva","ingenieria"));
+        listaEst.add(new Estudiante("namjoon","kim","psicologia"));
         
-        listaEsts.trimToSize();
-        copiaEsts.trimToSize();
+        //■ genere una nueva lista que sea una copia de la lista del inciso i
+        ArrayList<Estudiante> clista = new ArrayList<Estudiante>(listaEst);
         
-        Iterator<Estudiante> it1 = listaEsts.iterator();
-        Iterator<Estudiante> it2 = copiaEsts.iterator();
-        
-        while (it1.hasNext()){
-            System.out.println(it1.next());
+        //■ imprima el contenido de la lista original y el contenido de la nueva lista
+        System.out.println("----- primera lista -----");
+        for (Estudiante e: listaEst){
+            System.out.println(e.getNombre() + " " + e.getApellido() + ", " + e.getFacultad());
+        }
+        System.out.println("----- lista copiada -----");
+        for (Estudiante e: clista){
+            System.out.println(e.getNombre() + " " + e.getApellido() + ", " + e.getFacultad());
         }
         
-        while (it2.hasNext()){
-            System.out.println(it2.next());
+        //■ modifique algún dato de los estudiantes
+        Estudiante ests = listaEst.get(0);
+        ests.setNombre("soobin");
+        ests.setApellido("choi");
+        ests.setFacultad("artes");
+        
+        //■ vuelva a imprimir el contenido de la lista original y el contenido de la nueva lista.
+        System.out.println("\n----- lista modificada ----- ");
+        for(Estudiante e: listaEst){
+            System.out.println(e.getNombre() + " " + e.getApellido() + ", " + e.getFacultad());
         }
+        System.out.println("----- lista copiada -----");
+        for ( Estudiante e: clista){
+            System.out.println(e.getNombre() + " " + e.getApellido() + ", " + e.getFacultad());
+        }
+        /* por más que el cambio no haya sido en listaEst, se modifica también en la lista copiada, 
+            por lo tanto deben apuntar a la misma dirección de memoria*/
+        
+        
+        System.out.println("\n-----NUEVO ESTUDIANTE -----");
+        Estudiante testEst = new Estudiante("jungkook","jeon","artes");
+        if (!esta(testEst,listaEst)){
+            listaEst.add(testEst);
+            System.out.println("\nEstudiante agregado exitosamente!!");
+        }
+        else System.out.println("El estudiante ya existe.");
     }
     
 
-    
+
+    public static void main(String[]args){
+        Scanner escaner = new Scanner(System.in);
+        ArrayList<Integer> lista = new ArrayList<Integer>();
+        System.out.println("----- INGRESE NUMEROS (-1 PARA FINALIZAR) -----");
+        Integer e = escaner.nextInt();
+        while (e!=999){
+            lista.add(e);
+            e = escaner.nextInt();
+        }
+        System.out.println("\nLISTA:");
+        for(int i: lista){
+            System.out.println(i);
+        }
+        escaner.close();
+        metodo7d();
+       
+    } 
 }

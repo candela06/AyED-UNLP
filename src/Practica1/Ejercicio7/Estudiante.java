@@ -51,5 +51,14 @@ public class Estudiante {
         this.facultad = facultad;
     }
     
-    
+    @Override
+    public boolean equals(Object obj){
+        boolean result = false;
+        if ((obj!=null)&&(obj instanceof Estudiante)){
+            Estudiante e = (Estudiante)obj; //downcasting
+            if ((this.getNombre()== e.getNombre()) && (this.getApellido()==e.getApellido()))
+                result = true;
+        }
+        return result;
+    }
 }
